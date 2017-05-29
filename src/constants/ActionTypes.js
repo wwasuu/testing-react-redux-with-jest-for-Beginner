@@ -1,0 +1,2 @@
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS'
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS'
