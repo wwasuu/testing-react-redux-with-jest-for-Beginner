@@ -1,4 +1,4 @@
-# TESTING REACT REDUX WITH JEST FOR BEGINNER
+# TESTING REACT REDUX WITH JEST FOR BEGINNER :rocket:
 
 ## How to run test
 - npm run test
