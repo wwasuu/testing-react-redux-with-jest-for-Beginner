@@ -13,7 +13,6 @@ describe('[Unit] CommentBox Controller', () => {
     props = {
       addPost: jest.fn(),
     }
-
     component = shallow(<CommentBox {...props} />)
   })
 

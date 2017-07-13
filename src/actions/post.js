@@ -1,8 +1,6 @@
 import axios from 'axios'
 import httpAdapter from 'axios/lib/adapters/http'
 
-axios.defaults.adapter = httpAdapter;
-
 import {
   GET_POST_SUCCESS,
   ADD_POST_SUCCESS,
