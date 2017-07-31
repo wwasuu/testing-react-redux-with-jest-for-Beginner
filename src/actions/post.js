@@ -22,7 +22,7 @@ const getPosts = () => dispatch => (
   .then(res => dispatch(getPostsSuccess(res.data)))
 )
 
-const addPost = (message) => dispatch => (
+const addPost = message => dispatch => (
   axios.post(`${SERVICE_POST}`, { message })
   .then(res => dispatch(addPostSuccess(res.data)))
 )
