@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import PostBox from '../PostBox'
 import PostItem from '../../containers/PostItem'
 
-describe('[Unit] PostBox Controller', () => {
+describe('[Unit] PostBox Component', () => {
   let component
   let props
   

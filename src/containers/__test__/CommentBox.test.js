@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 
 import { CommentBox } from '../CommentBox'
 
-describe('[Unit] CommentBox Controller', () => {
+describe('[Unit] CommentBox Containers', () => {
   let component
   let props
 
@@ -22,7 +22,7 @@ describe('[Unit] CommentBox Controller', () => {
       message: 'Hello',
     }
     component.instance().typing(event)
-    expect(component.state()).toEqual(state);
+    expect(component.state()).toEqual(state)
   })
 
   it('Should call addPost function and set state correct when call addPoost function', () => {
@@ -32,6 +32,6 @@ describe('[Unit] CommentBox Controller', () => {
     }
     component.instance().addPost(message)
     expect(props.addPost).toHaveBeenCalledWith('Hello')
-    expect(component.state()).toEqual(state);
+    expect(component.state()).toEqual(state)
   })
 })

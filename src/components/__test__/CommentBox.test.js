@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import CommentBox from '../CommentBox'
 
-describe('[Unit] CommentBox Controller', () => {
+describe('[Unit] CommentBox Component', () => {
   let component
   let props
 

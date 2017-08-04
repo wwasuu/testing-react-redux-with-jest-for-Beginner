@@ -11,8 +11,16 @@ import { SERVICE_POST } from '../../constants/EndPoints'
 describe('[Unit] post Action', () => {
   const mockStore = configureMockStore([thunk])
   const store = mockStore({ posts: [] })
+  let mockAxios
 
-  it('creates GET_POST_SUCCESS action when calling getPostsSuccess()', () => {
+  beforeEach(() => {
+    mockAxios = sinon.mock(axios)
+  })
+  afterEach(() => {
+    mockAxios.restore()
+  })
+
+  it('Should creates GET_POST_SUCCESS action when calling getPostsSuccess()', () => {
     const posts = [
       { id: 2, message: 'testing2' },
       { id: 1, message: 'testing1' },
@@ -26,7 +34,7 @@ describe('[Unit] post Action', () => {
     expect(actual).toEqual(expected)
   })
 
-  it('creates ADD_POST_SUCCESS action when calling addPostSuccess()', () => {
+  it('Should creates ADD_POST_SUCCESS action when calling addPostSuccess()', () => {
     const post = { id: 2, message: 'testing2' }
 
     const actual = addPostSuccess(post)
@@ -37,8 +45,7 @@ describe('[Unit] post Action', () => {
     expect(actual).toEqual(expected)
   })
 
-  it('should ok', () => {
-    const mockAxios = sinon.mock(axios)
+  it('Should dispatch GET_POST_SUCCESS actions when calling getPosts()', () => {
     const posts = [{
       id: 1,
       message: 'Beware the dark side. #WednesdayWisdom',
@@ -53,10 +60,29 @@ describe('[Unit] post Action', () => {
         payload: posts,
       },
     ]
-    const apiData = { status: 200, data: posts };
-    const resApi = Promise.resolve(apiData);
+    const apiData = { status: 200, data: posts }
+    const resApi = Promise.resolve(apiData)
     mockAxios.expects('get').once().withArgs(`${SERVICE_POST}?_sort=id&_order=DESC`, {}).returns(resApi)
     store.dispatch(getPosts()).then(() => {
+      expect(store.getActions()).toEqual(expected)
+    })
+  })
+
+  it('Should dispatch ADD_POST_SUCCESS actions when calling addPost()', () => {
+    const data = {
+      id: 1,
+      message: 'Beware the dark side. #WednesdayWisdom',
+    }
+    const expected = [
+      {
+        type: ADD_POST_SUCCESS,
+        payload: data,
+      },
+    ]
+    const apiData = { status: 201, data }
+    const resApi = Promise.resolve(apiData)
+    mockAxios.expects('post').once().withArgs(`${SERVICE_POST}`, { message: data.message }).returns(resApi)
+    store.dispatch(addPost(data.message)).then(() => {
       expect(store.getActions()).toEqual(expected)
     })
   })
