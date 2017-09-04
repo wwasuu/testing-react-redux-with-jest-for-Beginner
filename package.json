@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "webpack",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "npm run test -- --watch",
     "json-server": "json-server --watch db.json"
   },
